@@ -1,6 +1,6 @@
 = Dot Files
 
-My set of dot files. Setup borrowed from Rayan Bates: from https://github.com/ryanb/dotfiles
+My set of dot files. Setup borrowed from Rayan Bates: https://github.com/ryanb/dotfiles
 
 == Installation:
 
