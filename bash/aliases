@@ -1,0 +1,53 @@
+#shell
+alias ..='cd ..'
+#alias la='ls -al'
+#alias ll='ls -l'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias pbcopy='xclip -selection "clipboard"'
+alias grep='grep --color=auto -nRI'
+
+#rails, dev
+alias g="git"
+alias gg="gitg &"
+alias go="gnome-open"
+alias migrate="bundle exec rake db:migrate db:test:prepare"
+alias t='time bundle exec rake spec cucumber'
+alias sc='./script/console'
+alias ss='./script/server'
+alias generate_ctags="find . -name *.rb | ctags -e -f tags -L - 2>>/dev/null"
+alias mysqldump="mysqldump -u root -p -ceKq --single-transaction --add-drop-table --default-character-set=utf8 --tables"
+alias models2diagram="dot -Tpng models.dot > models.png"
+
+#arkency
+alias bawaria='ssh users.arkency'
+alias irc='ssh users.arkency -t screen -x'
+
+#general
+alias fix_fn="echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode"
+
+#oneiric stuff
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+# changing directory to code project
+function rp { cd $RAILS_CODE/$1; }
+function c  { cd $CODE/$1; }
+
+# Automatically invoke bundler for rake, if necessary.
+function rake { if [ -e ./Gemfile.lock ]; then bundle exec rake "$@"; else /usr/bin/env rake "$@"; fi; }
+
+# alternative to "rails" command to use templates
+function railsapp {
+  template=$1
+  appname=$2
+  shift 2
+  rails $appname -m http://github.com/ryanb/rails-templates/raw/master/$template.rb $@
+}
+
+# misc
+alias reload='. ~/.bash_profile'

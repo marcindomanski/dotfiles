@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require File.expand_path("../folder_completion", __FILE__)
+
+puts FolderCompletion.new(ENV["COMP_LINE"], "~/dev/code/rails/").matches
+exit 0
