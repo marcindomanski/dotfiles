@@ -2,6 +2,7 @@
 alias ..='cd ..'
 #alias la='ls -al'
 #alias ll='ls -l'
+alias ls='ls --color'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -35,11 +36,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 # changing directory to code project
-function rp { cd $RAILS_CODE/$1; }
-function c  { cd $CODE/$1; }
+function rp { if [ $# -eq 0 ]; then cd $RAILS_CODE; ls; else cd $RAILS_CODE/$1; fi; }
+function c  { if [ $# -eq 0 ]; then cd $CODE; ls; else cd $CODE/$1; fi; }
 
-# Automatically invoke bundler for rake, if necessary.
+# Automatically invoke bundler for rake and cucumber, if necessary.
 function rake { if [ -e ./Gemfile.lock ]; then bundle exec rake "$@"; else /usr/bin/env rake "$@"; fi; }
+function cucumber { if [ -e ./Gemfile.lock ]; then bundle exec cucumber "$@"; else /usr/bin/env cucumber "$@"; fi; }
 
 # alternative to "rails" command to use templates
 function railsapp {
